@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AppStore</title>
+    <link rel="shortcut icon" type="images/x-icon" href="./img/favicon.ico">
+    <style>
+        html{
+		font-size: 16px;
+	}	
+        *{
+            margin:0;
+            padding:0;
+            font-family:'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB','Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+            box-sizing: border-box;
+        }
+        img{
+            display: block;
+        }
+        li{
+            list-style:none;
+        }
+        body{
+            background-color: #333;
+        }
+
+        #page{
+            width: 375px;
+            height: 812px;
+            background-color: #1c1c1e;
+            margin: 40px auto;
+            position:relative;
+        }
+        main{
+            width: 375px;
+            height: 812px;
+            overflow: scroll;
+        }
+        .back{
+            width: 28px;
+            position:absolute;
+            left:20px;
+            top:20px;
+        }
+        .bgimg img{
+            width: 100%;
+        }
+        .box1{
+            width: 100%;
+            height: 158px;
+            padding: 20px;
+            display: flex;
+        }
+        .box1 .appIcon img{
+            width: 118px;
+        }
+        .appTitleBox{
+            width: 100%;
+            height: 100%;
+            margin-left: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .appTitleBox .title h1{
+            color: #fff;
+            font-size: 22px;
+            font-weight: 500;
+        }
+        .appTitleBox .title p{
+            color: #999;
+            font-size: 14px;
+        }
+        .appTitleBox .btnBox{
+            display: flex;
+            justify-content: space-between;
+        }
+        .appTitleBox .btnBox div{
+            display: flex;
+            align-items: center;
+        }
+        .appTitleBox .btnBox button{
+            width: 72px;
+            height: 28px;
+            background-color: #3b82f6;
+            border-radius: 14px;
+            border: none;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .appTitleBox .btnBox p{
+            color: #999;
+            font-size: 12px;
+            margin-left: 6px;   
+        }
+        .appTitleBox .btnBox img{
+            width: 28px; 
+        }
+        .line{
+            width: 335px;
+            height: .5px;
+            background-color: #3d3d41;
+            margin: 0 auto;
+        }
+        .box2{
+            width: 100%;
+            height: 88px;
+            padding: 12px 0;
+            display: flex;
+            overflow: scroll;
+        }
+        .box2 p,.box2 span{
+            color: #8e8e92;
+            font-size: 12px;
+            line-height: 14px;
+        }
+        .box2 h1{
+            width: 60px;
+            color: #8e8e92;
+            font-size: 18px;
+            text-align: center;
+        }
+        .box2 .mation1,.mation2,.mation3,.mation{
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 20px;
+        }
+        .box2 .mation1 img{
+            width: 72px;
+        }
+        .box2 .mation2 img{
+            width: 50px;
+        }
+        .box2 .mation3 img{
+            width: 25px;
+        }
+        .box3 {
+            padding: 12px 0;
+            overflow: scroll;
+        }
+        .box3 .Preview{
+            display: flex;
+            margin-left: 20px;
+            width: 1585px;
+            /* height:400px ;
+            background-color: red; */
+        }
+        .box3 .Preview img,video{
+            width: 215px;
+            height: 385px;
+            margin-right: 10px;
+            border-radius: 8px;
+        }
+        .box4 .list1{
+            height: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            margin-bottom: 12px;
+        }
+        .box4 .list1 .leftbox{
+            height: 22px;
+            display: flex;
+        }
+        .box4 .list1 img,.box5 .list2 img{
+            height: 22px;
+        }
+        .box4 .list1 p{
+            color: #999;
+            font-size: 12px;
+            line-height: 22px;
+            margin-left: 8px;
+        }
+        .box5{
+            padding: 20px;
+        }
+        .box5 p,span{
+            color: #fff;
+            font-size: 14px;
+            line-height: 24px;
+            text-align: justify;
+        }
+        .box5 span{
+            color: #3b82f6;
+        }
+        .box5 .list2{
+            height: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0 30px 0;
+        }
+        .box5 .list2 p{
+            color: #999;
+            line-height: 14px;
+        }
+        .box6 {
+            padding: 0 20px 20px 20px;
+        }
+        .box6 h1{
+            color: #fff;
+            font-size: 22px;
+            font-weight: 400px;
+        }
+        .box6 p{
+            color: #3b82f6;
+            font-size: 12px;
+        }
+        .box6 .bgbox{
+            width: 335px;
+            height: 207px;
+            background: url(./img/16.png) no-repeat center;
+            background-size: 335px;
+            border-radius: 8px;
+            margin: 20px 0;
+            padding: 16px;
+            display: flex;
+            flex-direction: column-reverse;
+        }
+        .box6 .bgbox p{
+            color: rgba(255, 255, 255, .5);
+            font-size: 12px;
+        }
+        .score{
+            padding: 0 20px 20px 20px;
+        }
+        .score .title{
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 12px;
+        }
+        .score h1{
+            color: #fff;
+            font-size: 22px;
+            font-weight: 400px;
+        }
+        .score span{
+            color: #3b82f6;
+            line-height: 20px;
+        }
+        .score .numbox{
+            display: flex;
+            justify-content: space-between;
+        }
+        .score .numbox .num{
+            width: 70px;
+        }
+        .score .numbox .num h1{
+            color: #fff;
+            font-size: 44px;
+            text-align: center;
+        }
+        .score .numbox .num p{
+            color: #999;
+            font-size: 12px;
+            text-align: center;
+        }
+        .score .numbox .rightbox .level{
+            height: 54px;
+            display: flex;
+            align-items: center;
+        }
+        .score .numbox .rightbox .level img{
+            width: 44px;
+        }
+        .score .numbox .rightbox .level .Progressbarbox{
+            height: 38px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .score .numbox .rightbox .level .probox{
+            width: 168px;
+            height: 4px;
+            background-color: #3d3d40;
+            border-radius: 2px;
+            display: flex;
+            overflow: hidden;
+        }
+        .score .numbox .rightbox .level .pro1{
+            width: 88%;
+            background-color: #a5a5ac;
+        }
+        .score .numbox .rightbox .level .pro2{
+            width: 12px;
+            background-color: #a5a5ac;
+        }
+        .score .numbox .rightbox .level .pro3{
+            width: 8px;
+            background-color: #a5a5ac;
+        }
+        .score .numbox .rightbox .level .pro4{
+            width: 4px;
+            background-color: #a5a5ac;
+        }
+        .score .numbox .rightbox .level .pro5{
+            width: 6px;
+            background-color: #a5a5ac;
+        }
+        .score .numbox .rightbox p{
+            color: #999;
+            font-size: 12px;
+            text-align: right;
+        }
+        .commentbox{
+            overflow: scroll;
+            padding-bottom: 20px;
+        }
+        .commentbox .commbig{
+            width: 1085px;
+            display: flex;
+            margin-bottom: 30px;
+        }
+        .commentbox .commbig .com1{
+            width: 335px;
+            /* height: 224px; */
+            background-color: #2c2c2e;
+            padding: 20px;
+            border-radius: 8px;
+            margin-left: 20px;
+        }
+        .commentbox .commbig .com1 div{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        .commentbox .commbig .com1 h1{
+            color: #fff;
+            font-size: 12px;
+        }
+        .commentbox .commbig .com1 div p{
+            color: #999;
+            font-size: 12px;
+        }
+        .commentbox .commbig .com1 div .stars{
+            color: #ede334;
+        }
+        .commentbox .commbig .com1 img{
+            width: 70px;
+        }
+        .commentbox .commbig .com1 .info{
+            color: #fff;
+            font-size: 12px;
+            line-height: 16px;
+            /* text-align: justify; */
+            margin-top: 16px;
+        }
+        .commentbox .commbig .com1 .info span{
+            color: #3b82f6;
+            font-size: 12px;
+        }
+        .newfunction{
+            padding: 0 20px 20px 20px;
+        }
+        .newfunction .title{
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 12px;
+        }
+        .newfunction h1{
+            color: #fff;
+            font-size: 22px;
+            font-weight: 400px;
+        }
+        .newfunction span{
+            color: #3b82f6;
+            line-height: 20px;
+        }
+        .newfunction .version{
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 12px;
+        }
+        .newfunction .version p{
+            color: #999;
+            font-size: 12px;
+        }
+        .newfunction .content{
+            display: flex;
+            justify-content: space-between;
+            align-items: self-end;
+            margin-bottom: 12px;
+        }
+        .newfunction .content p{
+            color: #fff;
+            font-size: 14px;
+            line-height: 20px;
+        }
+        .box7{
+            padding: 0 20px 20px 20px;
+        }
+        .box7 .title{
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 12px;
+        }
+        .box7 h1{
+            color: #fff;
+            font-size: 22px;
+            font-weight: 400px;
+        }
+        .box7 span{
+            color: #3b82f6;
+        }
+        .box7 p{
+            color: #999;
+            font-size: 14px;
+            line-height: 18px;
+            text-align: justify;
+            margin-bottom: 40px;
+        }
+        .box7 .cardInfo{
+            padding: 20px;
+            background-color: #2c2c2e;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        .box7 .cardInfo img{
+            width: 36px;
+        }
+        .box7 .cardInfo h2{
+            color: #fff;
+            font-size: 16px;
+            line-height: 32px;
+        }
+        .box7 .cardInfo p{
+            text-align: center;
+            margin-bottom: 4px;
+        }
+        .box7 .cardInfo ul{
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+        .box7 .cardInfo li{
+            width: 147.5px;
+            color: #fff;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .box7 .cardInfo li img{
+            width: 22px;
+            margin-right: 10px;
+        }
+        .box8{
+            padding: 0 20px 20px 20px;
+        }
+        .box8 h1{
+            color: #fff;
+            font-size: 22px;
+            font-weight: 400px;
+        }
+        .box8 .centerbox{
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .box8 .centerbox img{
+            width: 48px;
+            margin-right: 12px;
+        }
+        .box8 .centerbox h3{
+            color: #fff;
+            font-size: 14px;
+            font-weight: 400;
+        }
+        .box8 .centerbox p{
+            color: #999;
+            font-size: 12px;
+            text-align: justify;
+        }
+        .box9{
+            padding-bottom: 40px;
+        }
+        .box9 h1{
+            color: #fff;
+            font-size: 22px;
+            font-weight: 400px;
+            margin: 0 0 16px 20px;
+        }
+        .box9 .bigbox{
+            overflow: scroll;
+        }
+        .box9 .bigbox .otherbox{
+            width: 688px ;
+            display: flex;
+            margin-left: 20px;
+        }
+        .box9 dl{
+            display: flex;
+            flex-direction: column;
+            width: 216px;
+            margin-right: 10px;
+        }
+        .box9 dt{
+            color: #999;
+            font-size: 12px;
+            line-height: 24px;
+        }
+        .box9 dd{
+            color: #fff;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div id="page">
+        <img src="./img/01.png" alt="" class="back">
+        <main>
+            <div class="bgimg">
+                <img src="./img/00.png" alt="">
+            </div>
+            <div class="box1">
+                <div class="appIcon">
+                    <img src="./img/02.png" alt="">
+                </div>
+                <div class="appTitleBox">
+                    <div class="title">
+                        <h1>Clash Royale</h1>
+                        <p>Epic Real-Time PvP Battles</p>
+                    </div>
+                    <div class="btnBox">
+                        <div>
+                            <button>获取</button>
+                            <p>App内购买</p>
+                        </div>
+                        <img src="./img/03.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="line"></div>
+            <div class="box2">
+                <div class="mation1">
+                    <p>245万个评分</p>
+                    <h1>4.6</h1>
+                    <img src="./img/04-1.png" alt="">
+                </div>
+                <div class="mation2">
+                    <p>获奖</p>
+                    <img src="./img/04-2.png" alt="">
+                    <span>App</span>
+                </div>
+                <div class="mation">
+                    <p>年龄</p>
+                    <h1>9+</h1>
+                    <span>岁</span>
+                </div>
+                <div class="mation">
+                    <p>排行榜</p>
+                    <h1>#12</h1>
+                    <span>策略</span>
+                </div>
+                <div class="mation3">
+                    <p>开发者</p>
+                    <img src="./img/05.png" alt="">
+                    <span>Supercell</span>
+                </div>
+                <div class="mation">
+                    <p>语言</p>
+                    <h1>RU</h1>
+                    <span>+14种语言</span>
+                </div>
+                <div class="mation">
+                    <p>大小</p>
+                    <h1>471.7</h1>
+                    <span>MB</span>
+                </div>
+            </div>
+            <div class="box3">
+                <div class="Preview">
+                    <video src="./medias/video.mp4" controls="controls"></video>
+                    <img src="./img/06.png" alt="">
+                    <img src="./img/07.png" alt="">
+                    <img src="./img/08.png" alt="">
+                    <img src="./img/09.png" alt="">
+                    <img src="./img/10.png" alt="">
+                    <img src="./img/11.png" alt="">
+                </div>
+            </div>
+            <div class="box4">
+                <div class="list1">
+                    <div class="leftbox">
+                        <img src="./img/12.png" alt="">
+                        <img src="./img/13.png" alt="">
+                        <p>iphone 和 iPad App</p>
+                    </div>
+                    <img src="./img/14.png" alt="">
+                </div>
+                <div class="line"></div>
+            </div>
+            <div class="box5">
+                <p>欢迎加入竞技场！配置卡组，智取对手，体验实时激战！《皇室战争》是一款由《部落冲突》团队倾力打造的实时多人对战游戏，这里有你喜爱的Clash世 <span>更多</span></p>
+                <div class="list2">
+                    <p><span>Supercell</span><br>开发者</p>
+                    <img src="./img/15.png" alt="">
+                </div>
+                <div class="line"></div>
+            </div>
+            <div class="box6">
+                <h1>活动</h1>
+                <p>现已推出</p>
+                <div class="bgbox">
+                    <p>新一季<br><span>Mortar Has Evolved！</span><br>New Card Evolution！</p>
+                </div>
+                <div class="line"></div>
+            </div>
+            <div class="score">
+                <div class="title">
+                    <h1>评分及评论</h1>
+                    <span>查看全部</span>
+                </div>
+                <div class="numbox">
+                    <div class="num">
+                        <h1>4.6</h1>
+                        <p>满分5分</p>
+                    </div>
+                    <div class="rightbox">
+                        <div class="level">
+                            <img src="./img/31.png" alt="">
+                            <div class="Progressbarbox">
+                                <div class="probox">
+                                    <div class="pro1"></div>
+                                </div>
+                                <div class="probox">
+                                    <div class="pro2"></div>
+                                </div>
+                                <div class="probox">
+                                    <div class="pro3"></div>
+                                </div>
+                                <div class="probox">
+                                    <div class="pro4"></div>
+                                </div>
+                                <div class="probox">
+                                    <div class="pro5"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <p>2,452,551个评分</p>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="commentbox">
+                <div class="commbig">
+                    <div class="com1">
+                        <div>
+                            <h1>Long Time Player Suggestions</h1>
+                            <p>9月1日</p>
+                        </div>
+                        <div>
+                            <img src="./img/32.png" alt="">
+                            <p>Benjamin Landshut</p>
+                        </div>
+                        <p class="info">Blue interrupted: ­You only think about the earth, but consider the sky and the sea. It is the water that is the basis of life and drawn up by the clouds from the deep sea. The sky gives space and peace and serenity. Without my peace, you would all be nothing.I bring laughter, gaiety, and warmth into the world. The sun is yellow, the moon is yellow, the stars are yellow.bo <span>更多</span></p>
+                    </div>
+                    <div class="com1">
+                        <div>
+                            <h1>Long Time Player Suggestions</h1>
+                            <p>9月1日</p>
+                        </div>
+                        <div>
+                            <!-- <img src="./img/32.png" alt=""> -->
+                            <p>⭐⭐⭐⭐⭐</p>
+                            <p>Benjamin Landshut</p>
+                        </div>
+                        <p class="info">Blue interrupted: ­You only think about the earth, but consider the sky and the sea. It is the water that is the basis of life and drawn up by the clouds from the deep sea. The sky gives space and peace and serenity. Without my peace, you would all be nothing.I bring laughter, gaiety, and warmth into the world. The sun is yellow, the moon is yellow, the stars are yellow.bo <span>更多</span></p>
+                    </div>
+                    <div class="com1">
+                        <div>
+                            <h1>Long Time Player Suggestions</h1>
+                            <p>9月1日</p>
+                        </div>
+                        <div>
+                            <!-- <img src="./img/32.png" alt=""> -->
+                            <p class="stars">★★★★★</p>
+                            <p>Benjamin Landshut</p>
+                        </div>
+                        <p class="info">Blue interrupted: ­You only think about the earth, but consider the sky and the sea. It is the water that is the basis of life and drawn up by the clouds from the deep sea. The sky gives space and peace and serenity. Without my peace, you would all be nothing.I bring laughter, gaiety, and warmth into the world. The sun is yellow, the moon is yellow, the stars are yellow.bo <span>更多</span></p>
+                    </div>
+                    <div></div>
+                </div>
+                <div class="line"></div>
+            </div>
+            <div class="newfunction">
+                <div class="title">
+                    <h1>新功能</h1>
+                    <span>版本历史记录</span>
+                </div>
+                <div class="version">
+                    <p>版本3.3314.5</p>
+                    <p>1周前</p>
+                </div>
+                <div class="content">
+                    <p>卡牌觉醒上线，全新觉醒部队等您解锁！<br>
+                        • 卡牌觉醒，释放强大潜力！<br>
+                        • 全新超凡等级，提升卡牌战力！
+                    </p>
+                    <span>更多</span>
+                </div>
+                <div class="line"></div>
+            </div>
+            <div class="box7">
+                <div class="title">
+                    <h1>App隐私</h1>
+                    <span>查看详细信息</span>
+                </div>
+                <p>开发者Supercell已表明该App的隐私规范可能包括下述数据处理方式。更多相关信息，请参阅<span>开发者隐私政策</span>。</p>
+                <div class="cardInfo">
+                    <img src="./img/21.png" alt="">
+                    <h2>与你关联的数据</h2>
+                    <p>开发者可能会收集以下数据，且数据与你的身份关联：</p>
+                    <ul>
+                        <li><img src="./img/22.png" alt="">购买项目</li>
+                        <li><img src="./img/23.png" alt="">位置</li>
+                        <li><img src="./img/24.png" alt="">联系信息</li>
+                        <li><img src="./img/25.png" alt="">联系人</li>
+                        <li><img src="./img/26.png" alt="">用户内容</li>
+                        <li><img src="./img/27.png" alt="">标识符</li>
+                        <li><img src="./img/28.png" alt="">使用数据</li>
+                        <li><img src="./img/29.png" alt="">诊断</li>
+                        <li><img src="./img/30.png" alt="">其他数据</li>
+                    </ul>
+                </div>
+                <p>隐私规范可能因您使用的功能或您的年龄等因素而异。<span>了解更多</span></p>
+                <div class="line"></div>
+            </div>
+            <div class="box8">
+                <h1>支持</h1>
+                <div class="centerbox">
+                    <img src="./img/17.png" alt="">
+                    <div class="infobox">
+                        <h3>Game Center</h3>
+                        <p>和朋友一起玩、查看和比较各自的得分和成就、向其他玩家发出挑战，还可以在多人游戏中竞赛。</p>
+                    </div>
+                </div>
+                <div class="line"></div>
+            </div>
+            <div class="box9">
+                <h1>相关专题</h1>
+                <div class="bigbox">
+                    <div class="otherbox">
+                        <dl>
+                            <img src="./img/18.png" alt="">
+                            <dt>常玩常新</dt>
+                            <dd>Clash Royale</dd>
+                        </dl>
+                        <dl>
+                            <img src="./img/19.png" alt="">
+                            <dt>指南</dt>
+                            <dd>打造《皇室战争》必胜牌组</dd>
+                        </dl>
+                        <dl>
+                            <img src="./img/20.png" alt="">
+                            <dt>指南</dt>
+                            <dd>《皇室战争》战术小贴士</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
